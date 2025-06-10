@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <script>
+        const dai={
+            name:"戴xx", //string
+            age:17, //number 整数 + 浮点数
+            hometow: "吉安",
+            hobbies:['学习','搞钱'], // js没有数组 也是对象
+            isSingle: true, //boolean
+            // target 形参
+            sendFlower(target)
+            {
+                target.receiveFlower(dai);
+            }
+        }
+
+        // 声明一个常量对象 (对象字面量) 从字面意义上了解这个对象
+        const xm={
+
+        name: "小美",
+        age: 19,
+        hometown: "九江",
+        sex: "female",
+        xq: 50,
+        receiveFlower(sender)
+        {
+            if(xm.xq< 80)
+        {
+            console.log("gun~~~~~~")
+        }
+        else
+        {
+            console.log(sender.name+"送了花,出去玩吧")
+        }
+            
+        }
+
+        }
+
+        const xh = {
+            name : "小红",
+            hometown: "吉安",
+            receiveFlower(sender)
+            {
+                // === 值与类型相等 ==值相等
+                // if(sender.name==='戴xx')
+                // {
+                //     console.log('让我们在一起吧，暗恋你很久了...')
+                //     return;
+                // }
+                 
+                 setTimeout(function(){
+                    xm.xq=99
+                    xm.receiveFlower(sender)
+                 },2000)
+            }
+        }
+
+    </script>
+
+
+
+</body>
+</html>

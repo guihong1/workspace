@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html敲击乐</title>
+    <link rel="stylesheet" href="./common.css">
+
+</head>
+<body>
+<!-- 颜色选择器 -->
+<div class="color-picker-container">
+  <label for="highlight-color">选择高亮颜色：</label>
+  <input type="color" id="highlight-color" value="#ffff00">
+</div>
+
+
+<div class="keys">
+    <div class="keyboard-row">
+        <div class="key"><div data-key="q">Q</div><span class="sound">clap</span></div>
+        <div class="key"><div data-key="w">W</div><span class="sound">hihat</span></div>
+        <div class="key"><div data-key="e">E</div><span class="sound">kick</span></div>
+        <div class="key"><div data-key="r">R</div><span class="sound">openhat</span></div>
+        <div class="key"><div data-key="t">T</div><span class="sound">boom</span></div>
+        <div class="key"><div data-key="y">Y</div><span class="sound">ride</span></div>
+        <div class="key"><div data-key="u">U</div><span class="sound">snare</span></div>
+        <div class="key"><div data-key="i">I</div><span class="sound">tomk</span></div>
+        <div class="key"><div data-key="o">O</div><span class="sound">tink</span></div>
+        <div class="key"><div data-key="p">P</div><span class="sound">cowbell</span></div>
+    </div>
+    <div class="keyboard-row">
+        <div class="key"><div data-key="a">A</div><span class="sound">clap</span></div>
+        <div class="key"><div data-key="s">S</div><span class="sound">hihat</span></div>
+        <div class="key"><div data-key="d">D</div><span class="sound">kick</span></div>
+        <div class="key"><div data-key="f">F</div><span class="sound">openhat</span></div>
+        <div class="key"><div data-key="g">G</div><span class="sound">boom</span></div>
+        <div class="key"><div data-key="h">H</div><span class="sound">ride</span></div>
+        <div class="key"><div data-key="j">J</div><span class="sound">snare</span></div>
+        <div class="key"><div data-key="k">K</div><span class="sound">tomk</span></div>
+        <div class="key"><div data-key="l">L</div><span class="sound">tink</span></div>
+    </div>
+    <div class="keyboard-row">
+        <div class="key"><div data-key="z">Z</div><span class="sound">clap</span></div>
+        <div class="key"><div data-key="x">X</div><span class="sound">hihat</span></div>
+        <div class="key"><div data-key="c">C</div><span class="sound">kick</span></div>
+        <div class="key"><div data-key="v">V</div><span class="sound">openhat</span></div>
+        <div class="key"><div data-key="b">B</div><span class="sound">boom</span></div>
+        <div class="key"><div data-key="n">N</div><span class="sound">ride</span></div>
+        <div class="key"><div data-key="m">M</div><span class="sound">snare</span></div>
+    </div>
+</div>
+
+</body>
+
+<script>
+  // 监听键盘按下事件
+  window.addEventListener('keydown', function(e) {
+    const key = e.key.toLowerCase(); // 获取按下的键，转为小写
+    const audioKey = document.querySelector(`.key div:where([data-key='${key}'])`);
+
+    if (!audioKey) return;
+
+    const keyDiv = audioKey.closest('.key'); // 找到父级 .key 元素
+
+    if (keyDiv) {
+      keyDiv.classList.add('playing');
+
+      
+  }
+});
+
+
+window.addEventListener('keyup', function(e) {
+ const key = e.key.toLowerCase(); // 获取按下的键，转为小写
+ const audioKey = document.querySelector(`.key div:where([data-key='${key}'])`);
+
+ if (!audioKey) return;
+
+ const keyDiv = audioKey.closest('.key'); // 找到父级.key 元素 
+ if (keyDiv) {
+   keyDiv.classList.remove('playing'); 
+ }
+});
+
+</script>
+
+
+<script>
+  const colorInput = document.getElementById('highlight-color');
+  const styleTag = document.createElement('style');
+  document.head.appendChild(styleTag);
+
+  function updatePlayingStyle(color) {
+    styleTag.innerHTML = `
+      .key.playing {
+        background-color: ${color} !important;
+        transform: scale(1.1);
+        border-color: black;
+      }
+    `;
+  }
+
+  updatePlayingStyle(colorInput.value);
+
+  colorInput.addEventListener('input', function () {
+    updatePlayingStyle(this.value);
+  });
+</script>
+
+
+
+
+
+</html>

@@ -1,0 +1,64 @@
+
+ html {
+    height: 100%;
+    font-size: 10px;
+    background: url('./background.jpg') bottom center no-repeat;
+    background-size: cover;
+  }
+
+.keys {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    
+  }
+
+.key {
+    border: 4px solid black;
+    border-radius: 5px;
+    margin:10px;
+    font-size: 15px;
+    padding: 10px 5px;
+    width : 100px;
+    
+    color: white;
+    background: rgba(0,0,0,.4);
+    box-shadow:0 0 5px black;
+    text-align: center;
+
+    
+}
+.key div{
+    font-size:40px;
+
+}
+.key .sound{
+   font-size: 12px;
+   text-transform: uppercase;
+   letter-spacing: 1px;
+   color: #ffc600; 
+}
+
+.key.playing {
+  background-color: rgba(204, 0, 255, 0.073); /* 或你喜欢的颜色 */
+  border-color: black;
+  transform: scale(1.1);
+}
+.keyboard-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+.color-picker-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  font-family: sans-serif;
+}

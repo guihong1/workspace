@@ -1,0 +1,1 @@
+console.log(Symbol("马斯克")===Symbol("马斯克"))

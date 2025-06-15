@@ -26,7 +26,7 @@
   - 前后端分离 全栈
 
 ## 前端开发
-  - bootstrap.css   https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap
+  - bootstrap.css  
     css 框架， 加速界面开发
     - .container
     layout PC网页布局 1140px

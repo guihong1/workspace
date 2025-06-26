@@ -4,7 +4,7 @@
 import { OpenAI } from "openai";
 
 const client=new OpenAI({
-    apiKey:"sk-vuGPWFK0zc5leMWzWcY5oHf2nekXZOw8cimyQmZKqyaV6drn",
+    apiKey:"",
     baseURL:"https://api.302.ai/v1"
 })
 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap 学习</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- 排版示例 -->
+        <h1 class="display-4">Bootstrap 排版</h1>
+        <p class="lead">这是一个引导性段落，使用 .lead 类使段落更突出。</p>
+        
+        <!-- 文本样式 -->
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <h2>文本样式</h2>
+                <p class="text-primary">.text-primary 样式</p>
+                <p class="text-success">.text-success 样式</p>
+                <p class="text-info">.text-info 样式</p>
+                <p><mark>使用 mark 标签</mark></p>
+                <p class="text-muted">使用 .text-muted 类</p>
+            </div>
+            <div class="col-md-6">
+                <h2>对齐方式</h2>
+                <p class="text-start">左对齐文本</p>
+                <p class="text-center">居中对齐文本</p>
+                <p class="text-end">右对齐文本</p>
+            </div>
+        </div>
+
+        <!-- 响应式布局示例 -->
+        <h2 class="mt-5">响应式布局示例</h2>
+        <div class="row">
+            <!-- 在小屏幕上占12列，中等屏幕占6列，大屏幕占3列 -->
+            <div class="col-12 col-md-6 col-lg-3 mb-3">
+                <div class="p-3 border bg-light">响应式列 1</div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-3">
+                <div class="p-3 border bg-light">响应式列 2</div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-3">
+                <div class="p-3 border bg-light">响应式列 3</div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-3">
+                <div class="p-3 border bg-light">响应式列 4</div>
+            </div>
+        </div>
+
+        <!-- 响应式显示/隐藏 -->
+        <div class="mt-4">
+            <h2>响应式显示/隐藏</h2>
+            <p class="d-none d-md-block bg-info p-2 text-white">只在中等及以上屏幕显示</p>
+            <p class="d-md-none bg-warning p-2">只在小屏幕显示</p>
+        </div>
+
+        <!-- 响应式边距 -->
+        <div class="mt-4">
+            <h2>响应式边距</h2>
+            <div class="bg-light p-2 mb-2 mb-md-4">在中等屏幕上有更大的下边距</div>
+            <div class="bg-light p-2 mx-1 mx-md-5">在中等屏幕上有更大的水平边距</div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

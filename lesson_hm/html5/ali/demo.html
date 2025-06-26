@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script>
+        (function(){
+            function calc()
+        {
+            const w=document.documentElement.clientWidth;
+            console.log(w);
+            document.documentElement.style.fontSize=75*(w / 750)+'px';
+        }
+        calc()
+        window.onresize = function(){
+            calc();
+        }
+            
+        })()
+    </script>
+</head>
+<body>
+    <div class="item-section">
+        <div class="item-section_header">
+            <h2>
+                <img src="https://img.alicdn.com/tfs/TB1w16wKVXXXXaXXXXXXX-120-120.png" alt="">
+            </h2>
+        </div>
+    </div>
+    
+</body>
+</html>

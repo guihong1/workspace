@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = {
+            name:'Cherry',
+            // call apply 区别 
+            // call 参数一个个给 call(thisBinder,a,b,c,....参数)
+            // apply 一次性给，以数组的形式
+            // bind 不会调用函数，返回一个新的函数
+            fn: function(a,b){
+                console.log(this.name)
+                console.log(a+b);
+            }
+        }
+        var b=a.fn;
+       console.log(b.apply(a,[1,2]))
+       console.log(b.call(a,1,2))
+       console.log(b.bind(a,1,2)())
+    </script>
+</body>
+</html>

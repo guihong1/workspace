@@ -1,0 +1,30 @@
+{
+    "users":[
+        {
+            "id":1,
+            "name":"毛鸿彬"
+        },
+        {
+            "id":2,
+            "name":"张三"
+        },
+        {
+            "id":3,
+            "name":"李四"
+        }
+    ],
+    "posts":[
+        {
+            "id":1,
+            "title":"如何使用Throttle和Debounce",
+            "content":"Throttle和Debounce是两种常用的函数节流技术，主要用于优化性能，减少函数调用频率。Throttle会限制函数在一定时间内只能执行一次，而Debounce会延迟函数的执行直到停止触发事件。",
+            "userId":1
+        },
+        {
+            "id":2,
+            "title":"JavaScript中的事件处理",
+            "content":"在JavaScript中，事件处理是一个重要的概念。通过使用事件监听器，我们可以响应用户的交互，如点击、输入等。",
+            "userId":2
+        }
+    ]
+}

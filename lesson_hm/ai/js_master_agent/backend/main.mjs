@@ -1,24 +1,22 @@
-//入口文件
-//mjs  es6模块化
-//es5 js没有模块化能力 简单 不需要模块化，交给函数就可以了
-import { OpenAI } from "openai";
+import OpenAI from "openai";
 
-const client=new OpenAI({
-    apiKey:"sk-vuGPWFK0zc5leMWzWcY5oHf2nekXZOw8cimyQmZKqyaV6drn",
-    baseURL:"https://api.302.ai/v1"
-})
+const openai = new OpenAI(
+    {
+        // 若没有配置环境变量，请用百炼API Key将下行替换为：apiKey: "sk-xxx",
+        apiKey: "",
+        baseURL: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    }
+);
 
-
-
-const main=async ()=>{
-
-    //AIGC 图片
-    const response=await client.images.generate({
-        model:"dall-e-3",
-        prompt:"A spaceship flying through the universe.",
-        n: 1,
-        size:"1024x1024",
-    })
-    console.log(response.data[0].url)
+async function main() {
+    const completion = await openai.chat.completions.create({
+        model: "qwen-plus",  //此处以qwen-plus为例，可按需更换模型名称。模型列表：https://help.aliyun.com/zh/model-studio/getting-started/models
+        messages: [
+            { role: "system", content: "You are a helpful assistant." },
+            { role: "user", content: "你是谁？" }
+        ],
+    });
+    console.log(JSON.stringify(completion))
 }
-main()
+
+main();

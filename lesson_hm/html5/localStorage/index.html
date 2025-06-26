@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            height: 100%;
+        }
+        body {
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>LOCAL TAPAS</h2>
+        <p></p>
+        <ul class="plates">
+            <li>Loading....Tap</li>
+        </ul>
+        <form  class="add-items">
+            <input type="text" name="item" placeholder="Item Name" required>
+            <input type="submit" value="+ Add Item">
+        </form>
+        <script>
+            const addItems = document.querySelector('.add-items'); 
+            const itemsList = document.querySelector('.plates');
+            const items = [];
+            function addItem(event)
+            {
+                event.preventDefault();
+                 console.log(this,event.target)
+                 //性能优化
+                const text = (this.querySelector('[name=item]')).value.trim();
+                const item = {
+                    text,// es6
+                    done: false
+                }
+                items.push(item);
+                populateList(items,itemsList)
+            }
+            function populateList(plates,platesList){
+                platesList.innerHTML = plates.map((plate,i) => {
+
+                    return ` 
+                        <li>
+                        <input type="checkbox" data-index=${i} id="item${i}"
+                        ${plate.done ? 'checked' : ''}
+                        >
+                        <label for="item${i}">${plate.text}</label>
+                        </li>
+                        
+                        `
+                })
+            }
+
+
+
+            addItems.addEventListener('submit', addItem)
+        </script>
+    </div>
+</body>
+</html>

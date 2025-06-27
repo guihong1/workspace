@@ -17,9 +17,5 @@ async function main() {
     });
     console.log(JSON.stringify(completion))
 }
-<<<<<<< HEAD
 
 main();
-=======
-main()
->>>>>>> cbc98cc025bb4bec1de14aa2945f1edbe03d8280

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- 设定文档语言为英语 -->
+<html lang="en">
+<head>
+    <!-- 设置字符编码为 UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- 适配不同设备的视口设置 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 页面标题 -->
+    <title>3D地球</title>
+    <!-- 引入 Three.js 库 -->
+    <script src="https://cdn.bootcss.com/three.js/r83/three.min.js"></script>
+</head>
+<body>
+    <!-- 创建一个用于 WebGL 渲染的 canvas 元素 -->
+    <canvas id="webglcanvas"></canvas>
+    <script>
+        // 3D 渲染的容器，对应 HTML 中的 canvas 元素
+        let canvas, 
+        // 3D 场景，用于存放所有 3D 对象
+        scene,  
+        // 摄像机，决定了用户观察场景的视角
+        camera, 
+        // 渲染器，负责将 3D 场景渲染到 canvas 上
+        renderer, 
+        // 组，用于将多个 3D 对象组合在一起
+        group;  
+        // 鼠标在 X 轴和 Y 轴上的偏移量
+        let mouseX = 0, mouseY = 0;
+        // 窗口宽度的一半，作为球心的 X 坐标参考
+        let windowHalfX = window.innerWidth / 2; 
+        // 窗口高度的一半，作为球心的 Y 坐标参考
+        let windowHalfY = window.innerHeight / 2; 
+
+        // 初始化场景
+        init();
+        // 启动动画循环
+        animate();
+
+        // 准备函数，初始化场景、摄像机、渲染器等
+        function init() {
+            // 获取 HTML 中的 canvas 元素
+            canvas = document.getElementById('webglcanvas'); 
+            // 实例化一个新的 3D 场景
+            scene = new THREE.Scene(); 
+            // 创建一个透视摄像机，设置视角、宽高比、近裁剪面和远裁剪面
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 2000);
+            // 设置摄像机在 Z 轴上的位置
+            camera.position.z = 500;
+            // 设置场景的背景颜色为白色
+            scene.background = new THREE.Color(0xffffff);
+
+            // 创建一个新的组
+            group = new THREE.Group();
+            // 将组添加到场景中
+            scene.add(group);
+
+            // 创建一个纹理加载器
+            let loader = new THREE.TextureLoader();
+            // 加载指定路径的纹理图片
+            loader.load('1.png', function(texture) {
+                // 创建一个球体几何体，设置半径、宽度分段数和高度分段数
+                let geometry = new THREE.SphereGeometry(200, 20, 20); 
+                // 创建一个基础材质，并将加载的纹理应用到材质上
+                let material = new THREE.MeshBasicMaterial({ map: texture });
+                // 创建一个网格对象，将几何体和材质组合在一起
+                let mesh = new THREE.Mesh(geometry, material);
+                // 将网格对象添加到组中
+                group.add(mesh);
+            });
+
+            // 创建一个 WebGL 渲染器，指定渲染的 canvas 元素并开启抗锯齿
+            renderer = new THREE.WebGLRenderer({
+                canvas: canvas,
+                antialias: true
+            });
+            // 设置渲染器的尺寸为窗口的宽度和高度
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            // 监听鼠标移动事件，调用 onDocumentMouseMove 函数
+            document.addEventListener('mousemove',onDocumentMouseMove, false);
+        }
+
+        // 鼠标移动事件处理函数
+        function onDocumentMouseMove(event)
+        {
+            // 计算鼠标在 X 轴上相对于窗口中心的偏移量
+            mouseX = event.clientX-windowHalfX;
+            // 计算鼠标在 Y 轴上相对于窗口中心的偏移量
+            mouseY = event.clientY-windowHalfY;
+        }
+
+        // 动画循环函数，不断请求下一帧动画
+        function animate() {
+            requestAnimationFrame(animate)
+            // 调用渲染函数
+            render()
+        }
+        // 渲染函数，更新摄像机位置和组的旋转，并渲染场景
+        function render(){
+            // 根据鼠标偏移量平滑更新摄像机的 X 坐标
+            camera.position.x += (mouseX -  camera.position.x) * 0.05;
+            // 根据鼠标偏移量平滑更新摄像机的 Y 坐标
+            camera.position.y += (mouseY -  camera.position.y) * 0.05;
+            // 让摄像机始终看向场景中心
+            camera.lookAt(scene.position);
+            // 让组绕 Y 轴逆时针旋转
+            group.rotation.y -=0.005
+            // 渲染场景到 canvas 上
+            renderer.render(scene,camera) 
+        }
+    </script>
+</body>
+</html>

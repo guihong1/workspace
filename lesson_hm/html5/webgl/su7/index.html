@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D</title>
+</head>
+<body>
+    <canvas id="webglcanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('webglcanvas');
+
+        const ctx = canvas.getContext('2d')
+        ctx.beginPath()
+        let x = canvas.width / 2;
+        let y = canvas.height / 2;
+        let r = 70;
+        let startAngle = 0;
+        let endAngle = 2*Math.PI
+        let counterClickwise=false;
+        ctx.arc(x,y,r,startAngle,endAngle,counterClickwise)
+        ctx.fillStyle = 'green';
+        ctx.strokeStyle ='blue'
+        ctx.lineWidth = 5
+        
+        ctx.fill()
+        ctx.stroke()
+        ctx.closePath()
+    </script>
+</body>
+</html>
